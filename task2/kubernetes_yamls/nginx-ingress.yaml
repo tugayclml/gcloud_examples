@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-resource
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: 35.195.249.235.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: flaskapp-service
+          servicePort: 5000
+        path: /
